@@ -6,10 +6,12 @@
   "license": "AGPL-3.0-only",
   "type": "module",
   "scripts": {
-    "check": "node --check templates/assets/js/main.js && node --check templates/assets/js/pixel.js && prettier --check .",
+    "check": "node --check templates/assets/js/main.js && node --check templates/assets/js/pixel.js && node --check scripts/version.mjs && node --check scripts/sync-version.mjs && node --check scripts/release-notes.mjs && prettier --check .",
     "format": "prettier --write .",
-    "build": "pnpm check && theme-package",
-    "package": "theme-package"
+    "build": "pnpm check && pnpm package",
+    "package": "pnpm sync:version && theme-package",
+    "sync:version": "node scripts/sync-version.mjs",
+    "release:notes": "node scripts/release-notes.mjs"
   },
   "engines": {
     "node": ">=22"
