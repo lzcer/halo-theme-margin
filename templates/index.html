@@ -9,19 +9,31 @@
       th:if="${theme.config.home?.show_intro != false}"
       th:with="description=${theme.config.home?.description ?: site.seo.description ?: site.subtitle}"
     >
-      <p
-        class="eyebrow"
-        th:if="${not #strings.isEmpty(theme.config.home?.eyebrow)}"
-        th:text="${theme.config.home.eyebrow}"
-      ></p>
-      <h1
-        th:text="${#strings.isEmpty(theme.config.home?.title) ? site.title : theme.config.home.title}"
-      ></h1>
-      <p
-        class="intro-description"
-        th:if="${not #strings.isEmpty(description)}"
-        th:text="${description}"
-      ></p>
+      <div class="home-intro-copy">
+        <p
+          class="eyebrow"
+          th:if="${not #strings.isEmpty(theme.config.home?.eyebrow)}"
+          th:text="${theme.config.home.eyebrow}"
+        ></p>
+        <h1
+          th:text="${#strings.isEmpty(theme.config.home?.title) ? site.title : theme.config.home.title}"
+        ></h1>
+        <p
+          class="intro-description"
+          th:if="${not #strings.isEmpty(description)}"
+          th:text="${description}"
+        ></p>
+      </div>
+      <figure
+        class="pixel-landscape"
+        th:if="${theme.config.appearance?.style == 'pixel'}"
+        aria-hidden="true"
+      >
+        <th:block
+          th:replace="~{fragments/pixel-landscape :: landscape}"
+        ></th:block>
+        <figcaption>A QUIET PLACE ON THE INTERNET</figcaption>
+      </figure>
     </section>
     <h1
       class="visually-hidden"

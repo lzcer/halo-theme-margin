@@ -18,6 +18,8 @@ spec:
               value: paper
             - label: 淡雅 · 清浅苔绿
               value: elegant
+            - label: 像素 · 复古日志
+              value: pixel
         - $formkit: radio
           name: columns
           label: 文章列表布局

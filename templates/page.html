@@ -11,6 +11,16 @@
     >
       <a class="back-link" th:href="@{/}">← 返回首页</a>
       <header class="article-header">
+        <div
+          class="pixel-filebar"
+          th:if="${theme.config.appearance?.style == 'pixel'}"
+          aria-hidden="true"
+        >
+          <span
+            >JOURNAL / <span th:text="${singlePage.spec.title}"></span
+          ></span>
+          <span>UTF-8 · PAGE</span>
+        </div>
         <h1 th:text="${singlePage.spec.title}"></h1>
       </header>
       <div class="article-reading-body">

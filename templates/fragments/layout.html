@@ -23,6 +23,16 @@
       defer
       th:src="@{/assets/js/main.js(v=${theme.spec.version})}"
     ></script>
+    <link
+      rel="stylesheet"
+      th:if="${theme.config.appearance?.style == 'pixel'}"
+      th:href="@{/assets/css/pixel.css(v=${theme.spec.version})}"
+    />
+    <script
+      defer
+      th:if="${theme.config.appearance?.style == 'pixel'}"
+      th:src="@{/assets/js/pixel.js(v=${theme.spec.version})}"
+    ></script>
   </head>
   <body
     th:class="${'page-' + pageType}"
@@ -30,6 +40,15 @@
   >
     <a class="skip-link" href="#main-content">跳转到正文</a>
     <div class="site-shell">
+      <div
+        class="pixel-titlebar"
+        th:if="${theme.config.appearance?.style == 'pixel'}"
+        aria-hidden="true"
+      >
+        <span th:text="${site.title}"></span>
+        <span class="pixel-titlebar-lines"></span>
+        <span class="pixel-titlebar-dots"><i></i><i></i><i></i></span>
+      </div>
       <header th:replace="~{fragments/header :: header}"></header>
       <main id="main-content" class="site-main" tabindex="-1">
         <th:block th:replace="${content}"></th:block>

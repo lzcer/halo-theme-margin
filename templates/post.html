@@ -11,6 +11,14 @@
     >
       <a class="back-link" th:href="@{/}">← 返回文章列表</a>
       <header class="article-header">
+        <div
+          class="pixel-filebar"
+          th:if="${theme.config.appearance?.style == 'pixel'}"
+          aria-hidden="true"
+        >
+          <span>JOURNAL / <span th:text="${post.spec.title}"></span></span>
+          <span>UTF-8 · NOTES</span>
+        </div>
         <div class="article-meta">
           <a
             th:each="category : ${post.categories}"

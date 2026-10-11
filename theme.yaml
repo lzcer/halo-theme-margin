@@ -7,13 +7,13 @@ spec:
   author:
     name: lzcer
     website: https://github.com/lzcer
-  description: 一款简约、专注阅读的 Halo 博客主题，提供留白、纸页与淡雅三种风格，支持单／双列文章列表、自定义菜单与响应式布局。
+  description: 一款简约、专注阅读的 Halo 博客主题，提供留白、纸页、淡雅与像素四种风格，支持单／双列文章列表、自定义菜单与响应式布局。
   homepage: https://github.com/lzcer/halo-theme-margin
   repo: https://github.com/lzcer/halo-theme-margin.git
   issues: https://github.com/lzcer/halo-theme-margin/issues
   settingName: halo-theme-margin-settings
   configMapName: halo-theme-margin-config
-  version: 0.1.8
+  version: 0.1.9
   requires: ">=2.20.21"
   license:
     - name: AGPL-3.0
