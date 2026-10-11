@@ -1,0 +1,44 @@
+<th:block xmlns:th="https://www.thymeleaf.org" th:fragment="list(posts)">
+  <ol class="post-list" th:if="${not #lists.isEmpty(posts.items)}">
+    <li class="post-item" th:each="post : ${posts.items}">
+      <article>
+        <div class="post-heading">
+          <h2>
+            <a th:href="${post.status.permalink}" th:text="${post.spec.title}"
+              >文章标题</a
+            ><span class="pinned" th:if="${post.spec.pinned}">置顶</span>
+          </h2>
+          <time
+            class="post-date"
+            th:if="${post.spec.publishTime != null}"
+            th:datetime="${post.spec.publishTime}"
+            th:text="${#temporals.format(post.spec.publishTime, 'yyyy.MM.dd')}"
+          ></time>
+        </div>
+        <p
+          class="post-excerpt"
+          th:if="${theme.config.appearance?.show_excerpt != false and not #strings.isEmpty(post.status.excerpt)}"
+          th:text="${post.status.excerpt}"
+        ></p>
+        <div
+          class="post-categories"
+          th:if="${theme.config.appearance?.show_categories != false and not #lists.isEmpty(post.categories)}"
+        >
+          <a
+            th:each="category : ${post.categories}"
+            th:href="${category.status.permalink}"
+            th:text="${category.spec.displayName}"
+          ></a>
+        </div>
+      </article>
+    </li>
+  </ol>
+  <div class="empty-state" th:if="${#lists.isEmpty(posts.items)}">
+    <h2>这里还没有文章</h2>
+    <p>写下的第一篇，会从这里开始。</p>
+    <a th:href="@{/}">返回首页 →</a>
+  </div>
+  <th:block
+    th:replace="~{fragments/pagination :: pagination(${posts})}"
+  ></th:block>
+</th:block>

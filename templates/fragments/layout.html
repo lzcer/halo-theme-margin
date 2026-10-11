@@ -1,0 +1,41 @@
+<!doctype html>
+<html
+  lang="zh-CN"
+  xmlns:th="https://www.thymeleaf.org"
+  xmlns:halo="https://www.halo.run"
+  th:fragment="html(pageTitle, content, pageType)"
+  th:lang="${site.language ?: 'zh-CN'}"
+  th:attr="data-style=${theme.config.appearance?.style ?: 'blank'},data-color-scheme=${theme.config.appearance?.color_scheme ?: 'auto'}"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title
+      th:text="${#strings.isEmpty(pageTitle) ? site.title : pageTitle + ' - ' + site.title}"
+    >
+      余白
+    </title>
+    <link
+      rel="stylesheet"
+      th:href="@{/assets/css/main.css(v=${theme.spec.version})}"
+    />
+    <script
+      defer
+      th:src="@{/assets/js/main.js(v=${theme.spec.version})}"
+    ></script>
+  </head>
+  <body
+    th:class="${'page-' + pageType}"
+    th:attr="data-columns=${theme.config.appearance?.columns ?: 'single'},data-font-size=${theme.config.article?.font_size ?: '17'},data-toc-position=${theme.config.article?.toc_position ?: 'top'}"
+  >
+    <a class="skip-link" href="#main-content">跳转到正文</a>
+    <div class="site-shell">
+      <header th:replace="~{fragments/header :: header}"></header>
+      <main id="main-content" class="site-main" tabindex="-1">
+        <th:block th:replace="${content}"></th:block>
+      </main>
+      <footer th:replace="~{fragments/footer :: footer}"></footer>
+    </div>
+    <halo:footer />
+  </body>
+</html>

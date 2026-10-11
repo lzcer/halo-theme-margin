@@ -1,0 +1,22 @@
+{
+  "name": "halo-theme-margin",
+  "version": "0.1.2",
+  "private": true,
+  "description": "余白：简约、专注阅读的 Halo 博客主题",
+  "license": "AGPL-3.0-only",
+  "type": "module",
+  "scripts": {
+    "check": "node --check templates/assets/js/main.js && prettier --check .",
+    "format": "prettier --write .",
+    "build": "pnpm check && theme-package",
+    "package": "theme-package"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@11.19.0",
+  "devDependencies": {
+    "@halo-dev/theme-package-cli": "1.1.1",
+    "prettier": "3.8.3"
+  }
+}

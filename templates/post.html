@@ -1,0 +1,100 @@
+<!doctype html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  xmlns:halo="https://www.halo.run"
+  th:replace="~{fragments/layout :: html(${post.spec.title}, ~{::content}, 'post')}"
+>
+  <th:block th:fragment="content">
+    <article
+      class="reading-layout"
+      th:attr="data-toc-position=${theme.config.article?.toc_position ?: 'top'}"
+    >
+      <a class="back-link" th:href="@{/}">← 返回文章列表</a>
+      <header class="article-header">
+        <div class="article-meta">
+          <a
+            th:each="category : ${post.categories}"
+            th:href="${category.status.permalink}"
+            th:text="${category.spec.displayName}"
+          ></a>
+          <time
+            th:if="${post.spec.publishTime != null}"
+            th:datetime="${post.spec.publishTime}"
+            th:text="${#temporals.format(post.spec.publishTime, 'yyyy.MM.dd')}"
+          ></time>
+          <span
+            th:if="${theme.config.article?.show_author != false and post.owner != null}"
+            th:text="${post.owner.displayName}"
+          ></span>
+        </div>
+        <h1 th:text="${post.spec.title}"></h1>
+        <p
+          class="article-lede"
+          th:if="${theme.config.article?.show_excerpt != false and not #strings.isEmpty(post.status.excerpt)}"
+          th:text="${post.status.excerpt}"
+        ></p>
+      </header>
+      <img
+        class="article-cover"
+        th:if="${theme.config.article?.show_cover == true and not #strings.isEmpty(post.spec.cover)}"
+        th:src="${post.spec.cover}"
+        th:alt="${post.spec.title}"
+        fetchpriority="high"
+      />
+      <div class="article-reading-body">
+        <details
+          class="article-toc"
+          th:if="${theme.config.article?.show_toc != false}"
+          hidden
+        >
+          <summary>本文目录</summary>
+          <nav aria-label="本文目录"><ol></ol></nav>
+        </details>
+        <div
+          class="prose"
+          id="article-content"
+          th:utext="${post.content.content}"
+        ></div>
+      </div>
+      <nav
+        class="article-tags"
+        aria-label="文章标签"
+        th:if="${not #lists.isEmpty(post.tags)}"
+      >
+        <a
+          th:each="tag : ${post.tags}"
+          th:href="${tag.status.permalink}"
+          th:text="${'# ' + tag.spec.displayName}"
+        ></a>
+      </nav>
+      <nav
+        class="post-navigation"
+        aria-label="相邻文章"
+        th:if="${theme.config.article?.show_navigation != false}"
+        th:with="navigation=${postFinder.cursor(post.metadata.name)}"
+      >
+        <a
+          th:if="${navigation.hasPrevious()}"
+          th:href="${navigation.previous.status.permalink}"
+          ><span>← 上一篇</span
+          ><strong th:text="${navigation.previous.spec.title}"></strong
+        ></a>
+        <a
+          th:if="${navigation.hasNext()}"
+          th:href="${navigation.next.status.permalink}"
+          class="next-post"
+          ><span>下一篇 →</span
+          ><strong th:text="${navigation.next.spec.title}"></strong
+        ></a>
+      </nav>
+      <section class="comments" th:if="${haloCommentEnabled}" aria-label="评论">
+        <h2>评论</h2>
+        <halo:comment
+          group="content.halo.run"
+          kind="Post"
+          th:attr="name=${post.metadata.name}"
+        />
+      </section>
+    </article>
+  </th:block>
+</html>

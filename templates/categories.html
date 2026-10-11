@@ -1,0 +1,31 @@
+<!doctype html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{fragments/layout :: html('分类', ~{::content}, 'categories')}"
+>
+  <th:block th:fragment="content">
+    <header class="page-intro">
+      <p class="eyebrow">CATEGORIES</p>
+      <h1>分类</h1>
+      <p class="intro-description">按主题，找一篇想读的文章。</p>
+    </header>
+    <ul class="taxonomy-list" th:with="items=${categoryFinder.listAll()}">
+      <li th:each="category : ${items}">
+        <a th:href="${category.status.permalink}"
+          ><span th:text="${category.spec.displayName}"></span
+          ><span
+            class="taxonomy-count"
+            th:text="${category.postCount + ' 篇'}"
+          ></span
+        ></a>
+        <p
+          th:if="${not #strings.isEmpty(category.spec.description)}"
+          th:text="${category.spec.description}"
+        ></p>
+      </li>
+      <li class="empty-state" th:if="${#lists.isEmpty(items)}">
+        <p>暂时没有分类。</p>
+      </li>
+    </ul>
+  </th:block>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{fragments/layout :: html('标签', ~{::content}, 'tags')}"
+>
+  <th:block th:fragment="content">
+    <header class="page-intro">
+      <p class="eyebrow">TAGS</p>
+      <h1>标签</h1>
+    </header>
+    <ul class="taxonomy-list" th:with="items=${tagFinder.listAll()}">
+      <li th:each="tag : ${items}">
+        <a th:href="${tag.status.permalink}"
+          ><span th:text="${'# ' + tag.spec.displayName}"></span
+          ><span
+            class="taxonomy-count"
+            th:text="${tag.postCount + ' 篇'}"
+          ></span
+        ></a>
+      </li>
+      <li class="empty-state" th:if="${#lists.isEmpty(items)}">
+        <p>暂时没有标签。</p>
+      </li>
+    </ul>
+  </th:block>
+</html>

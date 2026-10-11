@@ -1,0 +1,147 @@
+apiVersion: v1alpha1
+kind: Setting
+metadata:
+  name: halo-theme-margin-settings
+spec:
+  forms:
+    - group: appearance
+      label: 外观与布局
+      formSchema:
+        - $formkit: radio
+          name: style
+          label: 视觉风格
+          value: blank
+          options:
+            - label: 留白 · 简洁黑白
+              value: blank
+            - label: 纸页 · 书刊排版
+              value: paper
+        - $formkit: radio
+          name: columns
+          label: 文章列表布局
+          value: single
+          help: 两种风格均可选择单列或双列；手机屏幕自动使用单列，正文保持单栏阅读。
+          options:
+            - label: 单列
+              value: single
+            - label: 双列
+              value: double
+        - $formkit: radio
+          name: color_scheme
+          label: 明暗模式
+          value: auto
+          options:
+            - label: 跟随系统
+              value: auto
+            - label: 浅色
+              value: light
+            - label: 深色
+              value: dark
+        - $formkit: checkbox
+          name: show_excerpt
+          label: 列表显示文章摘要
+          value: true
+        - $formkit: checkbox
+          name: show_categories
+          label: 列表显示文章分类
+          value: true
+    - group: home
+      label: 首页介绍
+      formSchema:
+        - $formkit: checkbox
+          name: show_intro
+          label: 显示首页介绍
+          value: true
+        - $formkit: text
+          name: eyebrow
+          label: 引导文字
+          value: A PERSONAL JOURNAL
+          help: 留空则不显示。
+        - $formkit: text
+          name: title
+          label: 介绍标题
+          value: 写一些值得留下的事。
+        - $formkit: textarea
+          name: description
+          label: 介绍正文
+          value: ""
+          help: 留空时使用系统设置中的站点描述或副标题。支持换行，不解析 HTML。
+        - $formkit: checkbox
+          name: show_categories
+          label: 显示分类导航
+          value: true
+    - group: navigation
+      label: 导航菜单
+      formSchema:
+        - $formkit: select
+          name: menu
+          label: 顶部菜单
+          value: ""
+          action: /api/v1alpha1/menus
+          autoSelect: false
+          clearable: true
+          requestOption:
+            labelField: spec.displayName
+            valueField: metadata.name
+          help: 留空使用后台主菜单。名称、链接、排序和层级请在 Halo 的菜单管理中维护。
+    - group: article
+      label: 文章阅读
+      formSchema:
+        - $formkit: select
+          name: font_size
+          label: 正文字号
+          value: "17"
+          options:
+            - label: 16 px
+              value: "16"
+            - label: 17 px
+              value: "17"
+            - label: 18 px
+              value: "18"
+            - label: 19 px
+              value: "19"
+        - $formkit: checkbox
+          name: show_toc
+          label: 显示文章目录
+          value: true
+          help: 正文至少有两个二级或三级标题时显示，点击可定位到对应章节。
+        - $formkit: checkbox
+          name: show_excerpt
+          label: 文章页显示摘要
+          value: true
+          help: 控制文章标题下方是否显示文章摘要。
+        - $formkit: radio
+          name: toc_position
+          label: 文章目录位置
+          value: top
+          options:
+            - label: 顶部
+              value: top
+            - label: 左侧
+              value: left
+            - label: 右侧
+              value: right
+        - $formkit: checkbox
+          name: show_author
+          label: 显示作者
+          value: true
+        - $formkit: checkbox
+          name: show_cover
+          label: 正文页显示封面
+          value: false
+        - $formkit: checkbox
+          name: show_navigation
+          label: 显示上一篇与下一篇
+          value: true
+    - group: footer
+      label: 页脚
+      formSchema:
+        - $formkit: text
+          name: note
+          label: 页脚短句
+          value: 用文字记录日常。
+        - $formkit: text
+          name: icp
+          label: ICP 备案号
+          value: ""
+          help: 未填写时不显示。

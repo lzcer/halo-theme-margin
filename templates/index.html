@@ -1,0 +1,51 @@
+<!doctype html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{fragments/layout :: html('', ~{::content}, 'index')}"
+>
+  <th:block th:fragment="content">
+    <section
+      class="home-intro"
+      th:if="${theme.config.home?.show_intro != false}"
+      th:with="description=${theme.config.home?.description ?: site.seo.description ?: site.subtitle}"
+    >
+      <p
+        class="eyebrow"
+        th:if="${not #strings.isEmpty(theme.config.home?.eyebrow)}"
+        th:text="${theme.config.home.eyebrow}"
+      ></p>
+      <h1
+        th:text="${#strings.isEmpty(theme.config.home?.title) ? site.title : theme.config.home.title}"
+      ></h1>
+      <p
+        class="intro-description"
+        th:if="${not #strings.isEmpty(description)}"
+        th:text="${description}"
+      ></p>
+    </section>
+    <h1
+      class="visually-hidden"
+      th:if="${theme.config.home?.show_intro == false}"
+      th:text="${site.title}"
+    ></h1>
+    <div class="list-heading">
+      <nav
+        class="category-filter"
+        aria-label="文章分类"
+        th:if="${theme.config.home?.show_categories != false}"
+      >
+        <a th:href="@{/}" aria-current="page">全部</a>
+        <a
+          th:each="category : ${categoryFinder.listAll()}"
+          th:href="${category.status.permalink}"
+          th:text="${category.spec.displayName}"
+        ></a>
+      </nav>
+      <span th:if="${theme.config.home?.show_categories == false}"
+        >最新文章</span
+      >
+      <span class="post-count" th:text="${posts.total + ' 篇文章'}"></span>
+    </div>
+    <th:block th:replace="~{fragments/post-list :: list(${posts})}"></th:block>
+  </th:block>
+</html>

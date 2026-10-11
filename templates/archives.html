@@ -1,0 +1,38 @@
+<!doctype html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{fragments/layout :: html('归档', ~{::content}, 'archives')}"
+>
+  <th:block th:fragment="content">
+    <header class="page-intro">
+      <p class="eyebrow">ARCHIVE</p>
+      <h1>文章归档</h1>
+      <p class="intro-description">把写过的日子，按时间收好。</p>
+    </header>
+    <section class="archive-year" th:each="archive : ${archives.items}">
+      <h2 th:text="${archive.year}"></h2>
+      <div class="archive-month" th:each="month : ${archive.months}">
+        <h3 th:text="${month.month + ' 月'}"></h3>
+        <ul>
+          <li th:each="post : ${month.posts}">
+            <time
+              th:if="${post.spec.publishTime != null}"
+              th:datetime="${post.spec.publishTime}"
+              th:text="${#temporals.format(post.spec.publishTime, 'MM.dd')}"
+            ></time
+            ><a
+              th:href="${post.status.permalink}"
+              th:text="${post.spec.title}"
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <div class="empty-state" th:if="${#lists.isEmpty(archives.items)}">
+      <p>暂时没有已发布的文章。</p>
+    </div>
+    <th:block
+      th:replace="~{fragments/pagination :: pagination(${archives})}"
+    ></th:block>
+  </th:block>
+</html>

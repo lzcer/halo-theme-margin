@@ -1,0 +1,37 @@
+<header
+  class="site-header"
+  xmlns:th="https://www.thymeleaf.org"
+  th:fragment="header"
+  th:with="menuName=${theme.config.navigation?.menu},menu=${#strings.isEmpty(menuName) ? menuFinder.getPrimary() : menuFinder.getByName(menuName)}"
+>
+  <a class="site-brand" th:href="@{/}" aria-label="返回首页">
+    <img
+      class="site-logo"
+      th:if="${not #strings.isEmpty(site.logo)}"
+      th:src="${site.logo}"
+      alt=""
+      width="36"
+      height="36"
+    />
+    <span th:text="${site.title}">余白</span>
+  </a>
+  <div
+    class="header-navigation"
+    th:if="${menu != null and not #lists.isEmpty(menu.menuItems)}"
+  >
+    <button
+      class="mobile-menu-toggle"
+      type="button"
+      aria-controls="site-navigation"
+      aria-expanded="false"
+      hidden
+    >
+      菜单
+    </button>
+    <nav class="site-navigation" id="site-navigation" aria-label="主导航">
+      <th:block
+        th:replace="~{fragments/menu :: tree(${menu.menuItems}, 0)}"
+      ></th:block>
+    </nav>
+  </div>
+</header>

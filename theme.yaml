@@ -1,0 +1,20 @@
+apiVersion: theme.halo.run/v1alpha1
+kind: Theme
+metadata:
+  name: halo-theme-margin
+spec:
+  displayName: 余白 · Margin
+  author:
+    name: lzcer
+    website: https://github.com/lzcer
+  description: 一款简约、专注阅读的 Halo 博客主题，提供留白与纸页两种风格，支持单／双列文章列表、自定义菜单与响应式布局。
+  homepage: https://github.com/lzcer/halo-theme-margin
+  repo: https://github.com/lzcer/halo-theme-margin.git
+  issues: https://github.com/lzcer/halo-theme-margin/issues
+  settingName: halo-theme-margin-settings
+  configMapName: halo-theme-margin-config
+  version: 0.1.2
+  requires: ">=2.20.21"
+  license:
+    - name: AGPL-3.0
+      url: https://github.com/lzcer/halo-theme-margin/blob/main/LICENSE

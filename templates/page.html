@@ -1,0 +1,41 @@
+<!doctype html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  xmlns:halo="https://www.halo.run"
+  th:replace="~{fragments/layout :: html(${singlePage.spec.title}, ~{::content}, 'page')}"
+>
+  <th:block th:fragment="content">
+    <article
+      class="reading-layout"
+      th:attr="data-toc-position=${theme.config.article?.toc_position ?: 'top'}"
+    >
+      <a class="back-link" th:href="@{/}">← 返回首页</a>
+      <header class="article-header">
+        <h1 th:text="${singlePage.spec.title}"></h1>
+      </header>
+      <div class="article-reading-body">
+        <details
+          class="article-toc"
+          th:if="${theme.config.article?.show_toc != false}"
+          hidden
+        >
+          <summary>本页目录</summary>
+          <nav aria-label="本页目录"><ol></ol></nav>
+        </details>
+        <div
+          class="prose"
+          id="article-content"
+          th:utext="${singlePage.content.content}"
+        ></div>
+      </div>
+      <section class="comments" th:if="${haloCommentEnabled}" aria-label="评论">
+        <h2>评论</h2>
+        <halo:comment
+          group="content.halo.run"
+          kind="SinglePage"
+          th:attr="name=${singlePage.metadata.name}"
+        />
+      </section>
+    </article>
+  </th:block>
+</html>

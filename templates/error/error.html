@@ -1,0 +1,16 @@
+<!doctype html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{fragments/layout :: html('页面暂不可用', ~{::content}, 'error')}"
+>
+  <th:block th:fragment="content">
+    <section class="empty-state error-state">
+      <p class="eyebrow" th:text="${status ?: 'ERROR'}"></p>
+      <h1
+        th:text="${status == 404 ? '这一页，好像走远了。' : '页面暂时无法打开。'}"
+      ></h1>
+      <p>可以回到首页，继续找一篇想读的文章。</p>
+      <a th:href="@{/}">返回首页 →</a>
+    </section>
+  </th:block>
+</html>

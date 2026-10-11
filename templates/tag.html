@@ -1,0 +1,17 @@
+<!doctype html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{fragments/layout :: html(${tag.spec.displayName}, ~{::content}, 'tag')}"
+>
+  <th:block th:fragment="content">
+    <header class="page-intro">
+      <p class="eyebrow">TAG</p>
+      <h1 th:text="${'# ' + tag.spec.displayName}"></h1>
+    </header>
+    <div class="list-heading">
+      <a th:href="@{/}">← 全部文章</a
+      ><span th:text="${posts.total + ' 篇文章'}"></span>
+    </div>
+    <th:block th:replace="~{fragments/post-list :: list(${posts})}"></th:block>
+  </th:block>
+</html>

@@ -1,0 +1,40 @@
+<footer
+  class="site-footer"
+  xmlns:th="https://www.thymeleaf.org"
+  th:fragment="footer"
+>
+  <div class="footer-left">
+    <span
+      >©
+      <span th:text="${#temporals.format(#temporals.createNow(), 'yyyy')}"
+        >2026</span
+      >
+      <span th:text="${site.title}">余白</span></span
+    >
+    <a
+      th:if="${not #strings.isEmpty(theme.config.footer?.icp)}"
+      href="https://beian.miit.gov.cn/"
+      target="_blank"
+      rel="noopener noreferrer"
+      th:text="${theme.config.footer.icp}"
+    ></a>
+  </div>
+  <div class="footer-right">
+    <span
+      th:if="${not #strings.isEmpty(theme.config.footer?.note)}"
+      th:text="${theme.config.footer.note}"
+    ></span>
+    <span class="theme-credit"
+      ><a href="https://www.halo.run/" target="_blank" rel="noopener noreferrer"
+        >Halo</a
+      >
+      /
+      <a
+        href="https://github.com/lzcer/halo-theme-margin"
+        target="_blank"
+        rel="noopener noreferrer"
+        >余白</a
+      ></span
+    >
+  </div>
+</footer>

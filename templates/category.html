@@ -1,0 +1,22 @@
+<!doctype html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{fragments/layout :: html(${category.spec.displayName}, ~{::content}, 'category')}"
+>
+  <th:block th:fragment="content">
+    <header class="page-intro">
+      <p class="eyebrow">CATEGORY</p>
+      <h1 th:text="${category.spec.displayName}"></h1>
+      <p
+        class="intro-description"
+        th:if="${not #strings.isEmpty(category.spec.description)}"
+        th:text="${category.spec.description}"
+      ></p>
+    </header>
+    <div class="list-heading">
+      <a th:href="@{/}">← 全部文章</a
+      ><span th:text="${posts.total + ' 篇文章'}"></span>
+    </div>
+    <th:block th:replace="~{fragments/post-list :: list(${posts})}"></th:block>
+  </th:block>
+</html>

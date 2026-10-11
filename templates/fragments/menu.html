@@ -1,0 +1,41 @@
+<ul
+  xmlns:th="https://www.thymeleaf.org"
+  th:fragment="tree(items, depth)"
+  class="menu-list"
+  th:classappend="${'menu-level-' + depth}"
+>
+  <li
+    th:each="item : ${items}"
+    th:with="hasChildren=${not #lists.isEmpty(item.children)}"
+    class="menu-item"
+  >
+    <div class="menu-entry">
+      <a
+        th:href="${item.status?.href ?: item.spec.href ?: '#'}"
+        th:text="${item.displayName}"
+        th:target="${item.spec.target?.value}"
+        th:rel="${item.spec.target?.value == '_blank' ? 'noopener noreferrer' : null}"
+        >菜单</a
+      >
+      <button
+        th:if="${hasChildren}"
+        type="button"
+        class="submenu-toggle"
+        aria-expanded="false"
+        th:attr="aria-controls=${'submenu-' + item.metadata.name},aria-label=${'展开' + item.displayName + '子菜单'}"
+        hidden
+      >
+        <span aria-hidden="true">⌄</span>
+      </button>
+    </div>
+    <div
+      th:if="${hasChildren}"
+      class="submenu"
+      th:id="${'submenu-' + item.metadata.name}"
+    >
+      <th:block
+        th:replace="~{fragments/menu :: tree(${item.children}, ${depth + 1})}"
+      ></th:block>
+    </div>
+  </li>
+</ul>
