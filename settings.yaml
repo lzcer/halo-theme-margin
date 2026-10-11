@@ -16,11 +16,13 @@ spec:
               value: blank
             - label: 纸页 · 书刊排版
               value: paper
+            - label: 淡雅 · 清浅苔绿
+              value: elegant
         - $formkit: radio
           name: columns
           label: 文章列表布局
           value: single
-          help: 两种风格均可选择单列或双列；手机屏幕自动使用单列，正文保持单栏阅读。
+          help: 各风格均可选择单列或双列；手机屏幕自动使用单列，正文保持单栏阅读。
           options:
             - label: 单列
               value: single
