@@ -14,7 +14,7 @@ spec:
   settingName: halo-theme-margin-settings
   configMapName: halo-theme-margin-config
   version: 0.1.9
-  requires: ">=2.20.21"
+  requires: ">=2.0.0"
   license:
     - name: AGPL-3.0
       url: https://github.com/lzcer/halo-theme-margin/blob/main/LICENSE
