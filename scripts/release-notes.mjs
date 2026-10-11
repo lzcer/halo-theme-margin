@@ -37,37 +37,21 @@ const repository = process.env.GITHUB_REPOSITORY;
 const server = process.env.GITHUB_SERVER_URL || "https://github.com";
 const url = repository ? `${server}/${repository}` : null;
 const escape = (text) => text.replace(/[\\`*_{}\[\]<>()!#|~]/g, "\\$&");
-const lines = [
-  "# 1. 更新记录",
-  "",
-  previous
-    ? `以下内容自动整理自 ${escape(previous)} 至 ${escape(tag)} 的 feat、fix、perf、style 类型提交。`
-    : "首次发布，以下内容自动整理自全部历史中的 feat、fix、perf、style 类型提交。",
-  "",
-  ...commits.map(({ hash, subject }) => {
+const lines = ["更新记录：", ""];
+for (const type of ["feat", "fix", "perf", "style"]) {
+  const group = commits.filter(({ subject }) => subject.startsWith(type));
+  if (!group.length) continue;
+  lines.push(`**${type}**`, "");
+  for (const { hash, subject } of group) {
     const ref = url
       ? `[${hash.slice(0, 7)}](${url}/commit/${hash})`
       : `\`${hash.slice(0, 7)}\``;
-    return `- ${escape(subject)} (${ref})`;
-  }),
-];
-if (!commits.length)
-  lines.push("此版本没有 feat、fix、perf 或 style 类型的更新。");
-if (previous && url) {
-  lines.push(
-    "",
-    `[完整差异](${url}/compare/${encodeURIComponent(previous)}...${encodeURIComponent(tag)})`,
-  );
+    lines.push(`- ${escape(subject)} (${ref})`);
+  }
+  lines.push("");
 }
-lines.push(
-  "",
-  "# 2. 安装",
-  "",
-  `下载附件 \`halo-theme-margin-${version}.zip\`，在 Halo 后台「外观 → 主题」上传安装或更新。`,
-  "",
-  "请使用主题 ZIP 附件，GitHub 自动生成的 Source code 压缩包不作为安装包。",
-  "",
-);
+if (!commits.length)
+  lines.push("此版本没有 feat、fix、perf 或 style 类型的更新。", "");
 mkdirSync("work", { recursive: true });
 writeFileSync("work/release-notes.md", lines.join("\n"), "utf8");
 if (process.env.GITHUB_OUTPUT) {
