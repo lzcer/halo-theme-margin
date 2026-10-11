@@ -13,7 +13,7 @@ spec:
   issues: https://github.com/lzcer/halo-theme-margin/issues
   settingName: halo-theme-margin-settings
   configMapName: halo-theme-margin-config
-  version: 0.1.2
+  version: 0.1.7
   requires: ">=2.20.21"
   license:
     - name: AGPL-3.0

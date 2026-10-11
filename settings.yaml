@@ -45,6 +45,11 @@ spec:
           name: show_categories
           label: 列表显示文章分类
           value: true
+        - $formkit: checkbox
+          name: show_category_tabs
+          label: 展示文章分类 Tab
+          value: true
+          help: 控制首页文章列表上方的分类筛选；关闭后显示“最新文章”。
     - group: home
       label: 首页介绍
       formSchema:
@@ -66,10 +71,6 @@ spec:
           label: 介绍正文
           value: ""
           help: 留空时使用系统设置中的站点描述或副标题。支持换行，不解析 HTML。
-        - $formkit: checkbox
-          name: show_categories
-          label: 显示分类导航
-          value: true
     - group: navigation
       label: 导航菜单
       formSchema:

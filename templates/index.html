@@ -32,7 +32,7 @@
       <nav
         class="category-filter"
         aria-label="文章分类"
-        th:if="${theme.config.home?.show_categories != false}"
+        th:if="${theme.config.appearance?.show_category_tabs != false}"
       >
         <a th:href="@{/}" aria-current="page">全部</a>
         <a
@@ -41,9 +41,9 @@
           th:text="${category.spec.displayName}"
         ></a>
       </nav>
-      <span th:if="${theme.config.home?.show_categories == false}"
-        >最新文章</span
-      >
+      <span th:if="${theme.config.appearance?.show_category_tabs == false}">
+        最新文章
+      </span>
       <span class="post-count" th:text="${posts.total + ' 篇文章'}"></span>
     </div>
     <th:block th:replace="~{fragments/post-list :: list(${posts})}"></th:block>

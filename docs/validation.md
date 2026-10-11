@@ -1,10 +1,12 @@
 # 1. 验证记录
 
+0.1.7 新增首页分类 Tab 开关。本次仅执行静态检查与打包，以下模板、浏览器及 Halo 联调记录来自此前开发阶段，不代表本次开关已完成真实站点联调。
+
 ## 1.1. 静态检查
 
 - `pnpm format` 通过，所有源码文件符合 Prettier 格式。
 - `pnpm check` 通过，主题 JavaScript 通过 Node.js 语法检查。
-- `pnpm build` 通过，生成 `dist/halo-theme-margin-0.1.2.zip`。
+- `pnpm build` 通过，生成 `dist/halo-theme-margin-0.1.7.zip`。
 - 安装包检查通过，ZIP 根目录包含 `theme.yaml`、`settings.yaml`、`templates/`，不包含 `node_modules`、`.git`、`.pnpm-store` 或 `work`。
 - `git diff --check` 通过。
 
@@ -12,7 +14,7 @@
 
 - 使用 Thymeleaf 3.1 和 Spring 表达式渲染留白／纸页、单列／双列的首页、文章、独立页面、作者、分类、标签、归档和错误页，共 40 组组合。
 - 使用 Microsoft Edge 检查 1440、768、390 和 320 像素宽度；两个明暗模式均无横向溢出。
-- 验证手机菜单、三级菜单、Escape 关闭、点击菜单外关闭、文章目录定位、代码复制和表格滚动容器。
+- 验证手机菜单、三级菜单、Escape 关闭、点击菜单外关闭、文章目录层级定位、图片预览滚轮缩放、代码块语言色标、代码复制和表格滚动容器。
 - 验证文章摘要为空时仍能展示列表，空分类页展示空状态，分页链接和错误页状态正常。
 
 ## 1.3. Halo 2.20.21 联调
