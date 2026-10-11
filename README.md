@@ -1,8 +1,12 @@
 # 1. 简介
 
+<img src="branding/margin-logo.png" alt="余白 · Margin Logo" width="96" height="96" />
+
 **余白 · Margin** 是一款简约、专注阅读的 Halo 博客主题，最低安装版本要求为 **Halo 2.0.0**。目前在 Halo 2.20.21 上进行过联调，较早版本尚未完整验证。
 
 在线预览：[https://blog.coook.top/](https://blog.coook.top/)
+
+![余白 · Margin 主题封面](branding/margin-cover.png)
 
 提供四种视觉风格：
 

@@ -1,0 +1,116 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="1600"
+  height="900"
+  viewBox="0 0 1600 900"
+  role="img"
+  aria-labelledby="title desc"
+>
+  <title id="title">余白 · Margin — 给文字，留一点空间。</title>
+  <desc id="desc">
+    Halo 主题发布封面，清浅苔绿配色，双页 M 字标与层叠纸页构图。
+  </desc>
+  <defs>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect x="1" y="1" width="2" height="2" fill="#dbe2d5" />
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="#fafbf8" />
+  <path d="M1112 0h488v900h-488z" fill="#edf1e7" />
+  <path d="M1112 0h488v900h-488z" fill="url(#grid)" />
+  <g font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+    <g transform="translate(100 76)">
+      <rect width="52" height="52" rx="7" fill="#3f5d38" />
+      <g transform="scale(.1015625)" fill="#fafbf8">
+        <path d="M112 368V144h40l88 96v128h-44V257l-40-44v155z" />
+        <path d="M272 368V240l88-96h40v224h-44V213l-40 44v111z" />
+      </g>
+      <text
+        x="72"
+        y="33"
+        fill="#3f5d38"
+        font-size="20"
+        letter-spacing="4"
+        font-family="Consolas, monospace"
+      >
+        MARGIN / HALO THEME
+      </text>
+    </g>
+    <text
+      x="98"
+      y="356"
+      font-size="130"
+      font-weight="700"
+      letter-spacing="10"
+      fill="#283b2a"
+    >
+      余白
+    </text>
+    <text
+      x="103"
+      y="446"
+      font-family="Bahnschrift, 'Segoe UI', sans-serif"
+      font-size="60"
+      font-weight="400"
+      letter-spacing="3"
+      fill="#3f5d38"
+    >
+      Margin
+    </text>
+    <text x="103" y="539" font-size="29" letter-spacing="3" fill="#4d5f47">
+      给文字，留一点空间。
+    </text>
+    <path d="M104 606h60" stroke="#3f5d38" stroke-width="3" />
+    <text x="104" y="659" fill="#687561" font-size="20" letter-spacing="2">
+      一个简约、专注阅读的 Halo 博客主题
+    </text>
+    <g transform="translate(0 0)">
+      <path d="M1178 207h254v480h-254z" fill="#c8d3bf" />
+      <path d="M1108 172h280v480h-280z" fill="#dde5d4" stroke="#bac7b0" />
+      <path d="M871 207h465v480H871z" fill="#ced8c5" />
+      <path
+        d="M856 190h465v480H856z"
+        fill="#fff"
+        stroke="#c0ccb7"
+        stroke-width="1.5"
+      />
+      <path d="M903 191v478" stroke="#d4ddcc" stroke-width="1.5" />
+      <path d="M856 242h465" stroke="#e0e6db" />
+      <text
+        x="924"
+        y="222"
+        fill="#66745f"
+        font-family="Consolas, monospace"
+        font-size="11"
+        letter-spacing="2"
+      >
+        A PERSONAL JOURNAL
+      </text>
+      <g transform="translate(941 267) scale(.565)" fill="#3f5d38">
+        <path d="M112 368V144h40l88 96v128h-44V257l-40-44v155z" />
+        <path d="M272 368V240l88-96h40v224h-44V213l-40 44v111z" />
+      </g>
+      <path
+        d="M953 535h236M953 555h202M953 575h158"
+        stroke="#dbe2d5"
+        stroke-width="5"
+      />
+      <rect x="1190" y="612" width="12" height="12" fill="#cad6bf" />
+      <rect x="1178" y="600" width="12" height="12" fill="#3f5d38" />
+    </g>
+    <path d="M100 764h1400" stroke="#cad4c2" />
+    <text x="104" y="818" fill="#5e6d56" font-size="18" letter-spacing="2">
+      留白 / 纸页 / 淡雅 / 像素
+    </text>
+    <text
+      x="1498"
+      y="818"
+      text-anchor="end"
+      fill="#5e6d56"
+      font-family="Consolas, monospace"
+      font-size="18"
+    >
+      blog.coook.top
+    </text>
+  </g>
+</svg>

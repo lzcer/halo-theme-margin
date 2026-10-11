@@ -1,0 +1,15 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="512"
+  height="512"
+  viewBox="0 0 512 512"
+  role="img"
+  aria-labelledby="title desc"
+>
+  <title id="title">余白 · Margin 透明字标</title>
+  <desc id="desc">由两张折页构成的苔绿色 M 字标。</desc>
+  <g fill="#3f5d38">
+    <path d="M112 368V144h40l88 96v128h-44V257l-40-44v155z" />
+    <path d="M272 368V240l88-96h40v224h-44V213l-40 44v111z" />
+  </g>
+</svg>
