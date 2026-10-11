@@ -6,6 +6,10 @@
   --line: #e4e6e8;
   --soft: #f5f6f7;
   --accent: #3e4650;
+  --comment-text-rgb: 40, 42, 46;
+  --comment-accent-rgb: 62, 70, 80;
+  --comment-surface-rgb: 255, 255, 255;
+  --comment-input-rgb: 245, 246, 247;
   --sans:
     -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei",
     "PingFang SC", sans-serif;
@@ -24,6 +28,10 @@
   --line: #d9d8cb;
   --soft: #eeede4;
   --accent: #566447;
+  --comment-text-rgb: 54, 57, 47;
+  --comment-accent-rgb: 86, 100, 71;
+  --comment-surface-rgb: 248, 245, 238;
+  --comment-input-rgb: 238, 237, 228;
   --body-font: var(--serif);
   --heading-font: var(--serif);
 }
@@ -35,6 +43,10 @@
   --line: #cbd3c5;
   --soft: #eef2e9;
   --accent: #426532;
+  --comment-text-rgb: 38, 48, 36;
+  --comment-accent-rgb: 66, 101, 50;
+  --comment-surface-rgb: 250, 251, 248;
+  --comment-input-rgb: 238, 242, 233;
 }
 
 :root[data-color-scheme="dark"] {
@@ -45,6 +57,10 @@
   --line: #383b40;
   --soft: #26292e;
   --accent: #d2d8e1;
+  --comment-text-rgb: 231, 232, 230;
+  --comment-accent-rgb: 210, 216, 225;
+  --comment-surface-rgb: 25, 27, 30;
+  --comment-input-rgb: 38, 41, 46;
 }
 
 :root[data-style="paper"][data-color-scheme="dark"] {
@@ -54,6 +70,10 @@
   --line: #454337;
   --soft: #2d2c25;
   --accent: #b7c69e;
+  --comment-text-rgb: 231, 227, 215;
+  --comment-accent-rgb: 183, 198, 158;
+  --comment-surface-rgb: 33, 31, 27;
+  --comment-input-rgb: 45, 44, 37;
 }
 
 :root[data-style="elegant"][data-color-scheme="dark"] {
@@ -63,6 +83,10 @@
   --line: #404d3b;
   --soft: #252e21;
   --accent: #a4c58b;
+  --comment-text-rgb: 225, 231, 221;
+  --comment-accent-rgb: 164, 197, 139;
+  --comment-surface-rgb: 25, 29, 24;
+  --comment-input-rgb: 37, 46, 33;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -74,6 +98,10 @@
     --line: #383b40;
     --soft: #26292e;
     --accent: #d2d8e1;
+    --comment-text-rgb: 231, 232, 230;
+    --comment-accent-rgb: 210, 216, 225;
+    --comment-surface-rgb: 25, 27, 30;
+    --comment-input-rgb: 38, 41, 46;
   }
 
   :root[data-style="paper"][data-color-scheme="auto"] {
@@ -83,6 +111,10 @@
     --line: #454337;
     --soft: #2d2c25;
     --accent: #b7c69e;
+    --comment-text-rgb: 231, 227, 215;
+    --comment-accent-rgb: 183, 198, 158;
+    --comment-surface-rgb: 33, 31, 27;
+    --comment-input-rgb: 45, 44, 37;
   }
 
   :root[data-style="elegant"][data-color-scheme="auto"] {
@@ -92,6 +124,10 @@
     --line: #404d3b;
     --soft: #252e21;
     --accent: #a4c58b;
+    --comment-text-rgb: 225, 231, 221;
+    --comment-accent-rgb: 164, 197, 139;
+    --comment-surface-rgb: 25, 29, 24;
+    --comment-input-rgb: 37, 46, 33;
   }
 }
 
@@ -1015,6 +1051,76 @@ html:not(.js) .submenu {
 .comments > h2 {
   font: 500 20px/1.6 var(--heading-font);
   margin-bottom: 24px;
+}
+:root .comments comment-widget {
+  display: block;
+  min-width: 0;
+  --halo-comment-widget-base-color: var(--text);
+  --halo-comment-widget-base-info-color: var(--muted);
+  --halo-comment-widget-base-font-family: var(--body-font);
+  --halo-comment-widget-base-font-size: 16px;
+  --halo-comment-widget-base-line-height: 1.8;
+  --halo-comment-widget-base-border-radius: 4px;
+  --halo-comment-widget-component-avatar-size: 32px;
+  --halo-comment-widget-component-avatar-rounded: 50%;
+  --halo-comment-widget-component-form-input-bg-color: var(--surface);
+  --halo-comment-widget-component-form-input-color: var(--text);
+  --halo-comment-widget-component-form-input-border-color: var(--line);
+  --halo-comment-widget-component-form-input-border-color-focus: var(--accent);
+  --halo-comment-widget-component-form-input-box-shadow-focus: 0 0 0 3px
+    var(--soft);
+  --halo-comment-widget-component-form-button-login-bg-color: var(--surface);
+  --halo-comment-widget-component-form-button-login-bg-color-hover: var(--soft);
+  --halo-comment-widget-component-form-button-login-border-color: var(--line);
+  --halo-comment-widget-component-form-button-submit-bg-color: var(--accent);
+  --halo-comment-widget-component-form-button-submit-color: var(--surface);
+  --halo-comment-widget-component-form-button-submit-border-color: var(
+    --accent
+  );
+  --halo-comment-widget-component-form-button-submit-border-color-hover: var(
+    --text
+  );
+  --halo-comment-widget-component-form-button-emoji-color: var(--muted);
+  --halo-comment-widget-component-comment-item-action-bg-color-hover: var(
+    --soft
+  );
+  --halo-comment-widget-component-comment-item-action-color-hover: var(
+    --accent
+  );
+  --halo-comment-widget-component-pagination-button-bg-color-hover: var(--soft);
+  --halo-comment-widget-component-pagination-button-bg-color-active: var(
+    --soft
+  );
+  --halo-comment-widget-component-pagination-button-border-color-active: var(
+    --accent
+  );
+  --halo-comment-widget-component-emoji-picker-rgb-color: var(
+    --comment-text-rgb
+  );
+  --halo-comment-widget-component-emoji-picker-rgb-accent: var(
+    --comment-accent-rgb
+  );
+  --halo-comment-widget-component-emoji-picker-rgb-background: var(
+    --comment-surface-rgb
+  );
+  --halo-comment-widget-component-emoji-picker-rgb-input: var(
+    --comment-input-rgb
+  );
+  --halo-comment-widget-component-emoji-picker-color-border: var(--line);
+  --halo-comment-widget-component-emoji-picker-color-border-over: var(--accent);
+}
+:root[data-style="paper"] .comments comment-widget,
+:root[data-style="elegant"] .comments comment-widget {
+  --halo-comment-widget-base-border-radius: 2px;
+}
+:root[data-style="pixel"] .comments comment-widget {
+  --halo-comment-widget-base-border-radius: 0;
+  --halo-comment-widget-component-avatar-rounded: 0;
+}
+@media (max-width: 767px) and (pointer: coarse) {
+  :root .comments comment-widget {
+    --halo-comment-widget-base-font-size: calc(16px / 0.875);
+  }
 }
 .taxonomy-list {
   list-style: none;

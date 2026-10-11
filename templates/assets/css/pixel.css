@@ -5,6 +5,10 @@
   --line: #afbea4;
   --soft: #e0e8d6;
   --accent: #45653b;
+  --comment-text-rgb: 40, 59, 42;
+  --comment-accent-rgb: 69, 101, 59;
+  --comment-surface-rgb: 250, 252, 245;
+  --comment-input-rgb: 224, 232, 214;
   --pixel-background: #e9eee4;
   --pixel-shadow: #acbca0;
   --scene-sky: #e0e8d6;
@@ -21,6 +25,10 @@
   --line: #586b4f;
   --soft: #303d2b;
   --accent: #aec994;
+  --comment-text-rgb: 227, 237, 219;
+  --comment-accent-rgb: 174, 201, 148;
+  --comment-surface-rgb: 33, 42, 32;
+  --comment-input-rgb: 48, 61, 43;
   --pixel-background: #171d17;
   --pixel-shadow: #11180e;
   --scene-sky: #303d2b;
@@ -38,6 +46,10 @@
     --line: #586b4f;
     --soft: #303d2b;
     --accent: #aec994;
+    --comment-text-rgb: 227, 237, 219;
+    --comment-accent-rgb: 174, 201, 148;
+    --comment-surface-rgb: 33, 42, 32;
+    --comment-input-rgb: 48, 61, 43;
     --pixel-background: #171d17;
     --pixel-shadow: #11180e;
     --scene-sky: #303d2b;
