@@ -1,6 +1,8 @@
 # 1. 简介
 
-<img src="branding/margin-logo.png" alt="余白 · Margin Logo" width="96" height="96" />
+<p align="center">
+  <img src="branding/margin-logo.png" alt="余白 · Margin Logo" width="96" height="96" />
+</p>
 
 **余白 · Margin** 是一款简约、专注阅读的 Halo 博客主题，最低安装版本要求为 **Halo 2.0.0**。目前在 Halo 2.20.21 上进行过联调，较早版本尚未完整验证。
 
