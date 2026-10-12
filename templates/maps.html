@@ -1,0 +1,51 @@
+<!doctype html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{fragments/layout :: html('旅行足迹', ~{::content}, 'maps')}"
+>
+  <th:block th:fragment="content">
+    <link
+      rel="stylesheet"
+      th:href="@{/assets/css/maps.css(v=${theme.spec.version})}"
+    />
+    <article
+      class="maps-page"
+      th:classappend="${theme.config.maps?.show_place_list == false ? ' maps-page--without-list' : ''}"
+      th:attr="data-provider=${theme.config.maps?.provider ?: 'mapbox'},data-token=${theme.config.maps?.mapbox_token ?: theme.config.maps?.mapbox?.token ?: ''},data-style=${theme.config.maps?.mapbox_style ?: theme.config.maps?.mapbox?.style ?: 'mapbox://styles/mapbox/light-v11'},data-center=${theme.config.maps?.mapbox_center ?: theme.config.maps?.mapbox?.center ?: '105,36'},data-zoom=${theme.config.maps?.mapbox_zoom ?: theme.config.maps?.mapbox?.zoom ?: '3'},data-min-zoom=${theme.config.maps?.mapbox_min_zoom ?: theme.config.maps?.mapbox?.min_zoom ?: '1'},data-max-zoom=${theme.config.maps?.mapbox_max_zoom ?: theme.config.maps?.mapbox?.max_zoom ?: '18'},data-cluster-radius=${theme.config.maps?.cluster_radius ?: '20'}"
+    >
+      <a class="back-link" th:href="@{/}">← 返回首页</a>
+      <header class="maps-heading">
+        <div>
+          <p class="maps-eyebrow">TRAVEL JOURNAL</p>
+          <h1>旅行足迹</h1>
+          <p class="maps-lede">
+            把去过的地方留在地图上，也把与它们有关的文字留下。
+          </p>
+        </div>
+        <span class="maps-provider" data-map-status>MAPBOX</span>
+      </header>
+      <section class="maps-layout" aria-label="旅行足迹地图">
+        <div class="maps-canvas-wrap">
+          <div class="maps-canvas" data-map aria-label="旅行足迹地图"></div>
+          <div class="maps-status" data-map-message role="status">
+            正在加载地图…
+          </div>
+        </div>
+        <aside
+          class="maps-sidebar"
+          th:if="${theme.config.maps?.show_place_list != false}"
+        >
+          <div class="maps-sidebar-heading">
+            <span>地点</span>
+            <span data-map-count>—</span>
+          </div>
+          <ol class="maps-place-list" data-place-list></ol>
+        </aside>
+      </section>
+    </article>
+    <script
+      defer
+      th:src="@{/assets/js/maps.js(v=${theme.spec.version})}"
+    ></script>
+  </th:block>
+</html>

@@ -1,12 +1,12 @@
 {
   "name": "halo-theme-margin",
-  "version": "0.1.9",
+  "version": "0.1.11-dev.6",
   "private": true,
   "description": "余白：简约、专注阅读的 Halo 博客主题",
   "license": "AGPL-3.0-only",
   "type": "module",
   "scripts": {
-    "check": "node --check templates/assets/js/main.js && node --check templates/assets/js/pixel.js && node --check scripts/version.mjs && node --check scripts/sync-version.mjs && node --check scripts/release-notes.mjs && prettier --check .",
+    "check": "node --check templates/assets/js/main.js && node --check templates/assets/js/maps.js && node --check templates/assets/js/pixel.js && node --check scripts/version.mjs && node --check scripts/sync-version.mjs && node --check scripts/release-notes.mjs && prettier --check .",
     "format": "prettier --write .",
     "build": "pnpm check && pnpm package",
     "package": "pnpm sync:version && theme-package",

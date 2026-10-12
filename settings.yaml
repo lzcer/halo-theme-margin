@@ -138,6 +138,77 @@ spec:
           name: show_navigation
           label: 显示上一篇与下一篇
           value: true
+    - group: maps
+      label: 足迹地图
+      formSchema:
+        - $formkit: select
+          name: provider
+          id: provider
+          key: provider
+          label: 地图供应商
+          value: mapbox
+          options:
+            - label: Mapbox
+              value: mapbox
+        - $formkit: text
+          name: mapbox_token
+          id: mapbox_token
+          key: mapbox_token
+          label: Mapbox Public Token
+          if: "$get(provider).value === mapbox"
+          help: 仅填写 Mapbox 的 pk. 开头的 Public Token，并在 Mapbox 后台限制站点域名。
+          value: ""
+        - $formkit: text
+          name: mapbox_style
+          id: mapbox_style
+          key: mapbox_style
+          label: Mapbox 地图样式
+          if: "$get(provider).value === mapbox"
+          value: mapbox://styles/mapbox/light-v11
+        - $formkit: text
+          name: mapbox_center
+          id: mapbox_center
+          key: mapbox_center
+          label: Mapbox 初始中心点
+          if: "$get(provider).value === mapbox"
+          help: 使用经度,纬度格式，例如 105,36。
+          value: "105,36"
+        - $formkit: number
+          name: mapbox_zoom
+          id: mapbox_zoom
+          key: mapbox_zoom
+          label: Mapbox 默认缩放
+          if: "$get(provider).value === mapbox"
+          value: 3
+        - $formkit: number
+          name: mapbox_min_zoom
+          id: mapbox_min_zoom
+          key: mapbox_min_zoom
+          label: Mapbox 最小缩放
+          if: "$get(provider).value === mapbox"
+          value: 1
+        - $formkit: number
+          name: mapbox_max_zoom
+          id: mapbox_max_zoom
+          key: mapbox_max_zoom
+          label: Mapbox 最大缩放
+          if: "$get(provider).value === mapbox"
+          value: 18
+        - $formkit: number
+          name: cluster_radius
+          id: cluster_radius
+          key: cluster_radius
+          label: 地点合并范围
+          help: 数值越大，地图缩小时越容易将附近地点合并，单位为像素。
+          value: 20
+          min: 1
+          max: 100
+        - $formkit: checkbox
+          name: show_place_list
+          id: show_place_list
+          key: show_place_list
+          label: 展示地点列表
+          value: true
     - group: footer
       label: 页脚
       formSchema:
