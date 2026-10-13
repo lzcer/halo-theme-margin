@@ -19,7 +19,27 @@
 
 支持单／双列文章列表、明暗模式和手机适配，提供多级菜单、文章目录、图片放大与缩放等阅读功能。
 
-# 2. 使用方式
+# 2. 风格预览
+
+以下为四种风格的浅色模式首页预览，使用相同的示例内容展示。
+
+## 2.1. 留白
+
+![留白风格首页预览](docs/previews/blank.png)
+
+## 2.2. 纸页
+
+![纸页风格首页预览](docs/previews/paper.png)
+
+## 2.3. 淡雅
+
+![淡雅风格首页预览](docs/previews/elegant.png)
+
+## 2.4. 像素
+
+![像素风格首页预览](docs/previews/pixel.png)
+
+# 3. 使用方式
 
 1. 前往 [GitHub Releases](https://github.com/lzcer/halo-theme-margin/releases)，下载 `halo-theme-margin-<版本号>.zip`。
 2. 在 Halo 后台进入「外观 → 主题」，上传 ZIP，启用「余白 · Margin」。
@@ -31,4 +51,4 @@
 
 如需显示评论，请安装并启用兼容的 Halo 评论插件，并开启对应文章的评论功能。
 
-安装并启用 `plugin-map-marker` 后，主题会提供 `/maps` 足迹页面。地点、分组和文章绑定由插件管理；地图供应商与 Public Token 在主题设置的「足迹地图」中配置。
+安装并启用 [plugin-map-marker](https://github.com/lzcer/plugin-map-marker) 后，主题会提供 `/maps` 足迹页面。原作者已删除原仓库，此链接为 fork 仓库地址。地点、分组和文章绑定由插件管理；地图供应商与 Public Token 在主题设置的「足迹地图」中配置。
